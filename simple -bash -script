@@ -1,0 +1,17 @@
+#!/bin/bash
+
+# Get user input for the target domain
+read -p "Enter the target domain (e.g., example.com): " target_domain
+
+# Fetch URLs from the Wayback Machine
+gau "$target_domain" > wayback_urls.txt
+
+# Filter and extract only .js URLs
+grep -E -o "(http|https)://[a-zA-Z0-9./?=_-]*\.js" wayback_urls.txt > wayback_js_urls.txt
+
+# Display success message
+echo "JavaScript URLs from Wayback Machine saved to wayback_js_urls.txt"
+# filtering js files using httpx content-type flag
+cat way back_js_urls.txt | httpx -content-type	"application/javascript" | grep ".js" > filtered_js
+#scanning filters js with nuclei for exposures
+cat filtered_js	 | nucle -t /home/op/nuclei-template/http/exposures.
