@@ -14,4 +14,4 @@ echo "JavaScript URLs from Wayback Machine saved to wayback_js_urls.txt"
 # filtering js files using httpx content-type flag
 cat way back_js_urls.txt | httpx -content-type	"application/javascript" | grep ".js" > filtered_js
 #scanning filters js with nuclei for exposures
-cat filtered_js	 | nucle -t /home/op/nuclei-template/http/exposures.
+cat filtered_js	 | nuclei -t /home/op/nuclei-template/http/exposures.
