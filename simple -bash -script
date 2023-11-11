@@ -12,6 +12,6 @@ grep -E -o "(http|https)://[a-zA-Z0-9./?=_-]*\.js" wayback_urls.txt > wayback_js
 # Display success message
 echo "JavaScript URLs from Wayback Machine saved to wayback_js_urls.txt"
 # filtering js files using httpx content-type flag
-cat way back_js_urls.txt | httpx -content-type	"application/javascript" | grep ".js" > filtered_js
+cat way_back_js_urls.txt | httpx -content-type	"application/javascript" | grep ".js" > filtered_js
 #scanning filters js with nuclei for exposures
 cat filtered_js	 | nuclei -t /home/op/nuclei-template/http/exposures.
